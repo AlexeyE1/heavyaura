@@ -1,0 +1,800 @@
+@import url('https://fonts.googleapis.com/css2?family=Carrois+Gothic&display=swap');
+
+:root {
+    --box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.363);
+}
+
+@font-face {
+    font-family: "dark";
+    src: url(../fonts/Blackblade.ttf);
+}
+
+span {
+    font-family: "dark", "Dark Wizards", serif;
+    font-size: 48px;
+    line-height: 0;
+}
+
+body {
+    font-family: "Carrois Gothic", sans-serif;
+    font-size: 18px;
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+h1 {
+    font-size: 48px;
+}
+
+h2 {
+    font-size: 48px;
+    font-weight: 600;
+}
+
+h3 {
+    font-size: 36px;
+
+}
+
+h5 {
+    font-size: 18px;
+    margin: 0;
+    font-weight: 600;
+}
+
+form select {
+    background-color: #fff;
+    border: none;
+}
+
+form select:focus {
+    background-color: #fff;
+    border: 1px solid #000;
+}
+
+input:focus {
+    box-shadow: none;
+}
+
+.window {
+    width: 1210px;
+    height: 600px;
+    margin-top: 100px;
+    border: 1px solid #00000036;
+    border-radius: 10px;
+}
+
+.window-login {
+    width: 1000px;
+    height: 600px;
+    margin-top: 100px;
+    border: 1px solid #00000036;
+    border-radius: 10px;
+}
+
+.windowp {
+    width: 1210px;
+    height: 600px;
+    margin-top: 100px;
+    border: 1px solid #00000036;
+    border-radius: 10px;
+    background-image: url(../img/window.png);
+    background-repeat: no-repeat;
+}
+
+.header {
+    height: 80px;
+    background-color: #fff;
+    box-shadow: var(--box-shadow);
+}
+
+.header-list {
+    text-transform: uppercase;
+}
+
+.heavy-logo {
+    position: fixed;
+    top: 0.5%;
+    left: 44.5%;
+}
+
+.header-container {
+    box-sizing: border-box;
+    max-width: 1400px;
+    margin: 0 auto;
+    justify-content: space-between;
+    padding: 0 15px;
+    align-items: center;
+}
+
+.container {
+    box-sizing: border-box;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+.home {
+    align-items: center;
+}
+
+.home-title {
+    margin-top: 210px;
+    margin-bottom: 50px;
+}
+
+.home-cards {
+    width: 650px;
+    overflow-x: hidden;
+}
+
+.home-card {
+    width: 200px;
+    height: 325px;
+    border: 1px solid #00000027;
+    border-radius: 5px;
+    transition: all 0.5s ease;
+    background-color: #fff;
+}
+
+.home-card:hover {
+    border: 1px solid #000000;
+}
+
+.title-card {
+    max-width: 185px;
+    margin-top: 20px;
+    min-height: 70px;
+}
+
+
+.card-img {
+    width: 195px;
+    height: 195px;
+}
+
+.price {
+    font-size: 20px;
+    font-weight: 700;
+    margin-top: -10px;
+}
+
+.home-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 180px;
+    height: 50px;
+    border: 1px solid #0000004b;
+    border-radius: 5px;
+    background-image: url(../img/btnh.png);
+    transition: all .4s ease;
+    z-index: 2;
+}
+
+.home-btn:hover {
+    border: 1px solid #000000;
+}
+
+.dada {
+    position: absolute;
+    z-index: -1;
+    opacity: 0.1;
+    top: -16%;
+}
+
+.frame1 {
+    position: absolute;
+    right: -0.5%;
+    bottom: 60%;
+    z-index: -1;
+}
+
+.frame2 {
+    position: absolute;
+    left: -0.5%;
+    bottom: 60%;
+    z-index: -1;
+}
+
+.frame3 {
+    position: absolute;
+    left: -0.3%;
+    top: 73.4%;
+    z-index: -1;
+}
+
+.frame4 {
+    position: absolute;
+    right: -0.3%;
+    top: 73.4%;
+    z-index: -1;
+}
+
+.logogothic {
+    position: absolute;
+    top: 6%;
+    left: 40%;
+    width: 400px;
+    height: 300px;
+}
+
+.subtitlee {
+    position: absolute;
+    bottom: 0%;
+    left: 44.5%;
+}
+
+.detail-image {
+    width: 650px;
+    height: 650px;
+}
+
+.detail-product {
+    margin-top: 80px;
+}
+
+.detail-description {
+    margin-left: 40px;
+    margin-top: 40px;
+}
+
+.detail-description p {
+    margin-top: 30px;
+    max-width: 700px;
+}
+
+.detail-description h2 span {
+    font-size: 56px;
+}
+
+.card-discount {
+    margin-top: -10px;
+    font-weight: 600;
+}
+
+.card-discount .price {
+    margin-top: -1px;
+}
+
+.line {
+    opacity: 0.7;
+    text-decoration: line-through;
+    font-weight: 300;
+}
+
+.cart-btn {
+    width: 180px;
+    height: 50px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.main {
+    margin-left: 150px;
+}
+
+.main-title {
+    font-size: 36px;
+    margin-bottom: 10px;
+    margin-top: 65px;
+}
+
+.items {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 225px);
+    width: 100%;
+    max-width: 1300px;
+    justify-content: center;
+    justify-items: center;
+    column-gap: 0px;
+    row-gap: 10px;
+    margin: 0 auto;
+}
+
+.sidebar {
+    margin-top: 70px;
+}
+
+.llist {
+    margin-left: -80px;
+}
+
+.sidebar ul li {
+    font-size: 20px;
+    width: 165px;
+    height: 35px;
+    margin-bottom: 5px;
+}
+
+.sidebar ul li a {
+    margin-left: 15px;
+    width: 165px;
+}
+
+.sidebar ul {
+    margin-top: 20px;
+}
+
+.selected {
+    border: 1px solid #000;
+    border-radius: 5px;
+    background-image: url(../img/categories-gtn.png);
+}
+
+.grob {
+    width: 35px;
+    height: 35px;
+    margin-right: 10px;
+}
+
+.cart-quantity {
+    position: absolute;
+    border-radius: 20px;
+    width: 20px;
+    height: 20px;
+    font-size: 13px;
+    border: 1px solid #000;
+    text-align: center;
+    margin-left: 20px;
+    margin-top: -40px;
+}
+
+.pagination {
+    display: flex;
+    position: absolute;
+    bottom: 0%;
+    left: 46%;
+    gap: 12px;
+    justify-content: center;
+}
+
+.disabled {
+    opacity: 0.2;
+}
+
+.cart {
+    flex-direction: column;
+}
+
+.cart-title {
+    margin-top: 60px;
+    margin-bottom: 30px;
+}
+
+.cart-cards {
+    max-height: 52vh; 
+    max-width: 600px;
+    overflow-y: auto;
+}
+
+.cart-cardsrem {
+    max-height: 52vh; 
+    width: 600px;
+    overflow-y: auto;
+}
+
+.cart-cardsproc {
+    max-height: 40vh; 
+    width: 600px;
+    overflow-y: auto;
+}
+
+.cart-card {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+    width: 570px;
+    height: 150px;
+    border: 1px solid #00000042;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    background-image: url(../img/cfr2.png);
+    background-repeat: no-repeat;
+}
+
+.cart-card:nth-child(even) {
+    background-image: url(../img/cfr1.png);
+    background-repeat: no-repeat;
+}
+
+.cart-card-img img {
+    width: 125px;
+    height: 125px;
+    border: 1px solid #00000086;
+}
+
+.cart-card-info {
+
+}
+
+.cart-card-name {
+    width: 180px;
+}
+
+.remove-btn {
+    background-color: #fff;
+    box-shadow: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 30px;
+    border: 1px solid #00000034;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: all 0.5s ease;
+}
+
+.remove-btn:hover {
+    border: 1px solid #000000;
+}
+
+.cart-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 180px;
+    height: 50px;
+    border: 1px solid #00000034;
+    border-radius: 5px;
+    margin: 0;
+    transition: all 0.5s ease;
+}
+
+.cart-btn:hover {
+    border: 1px solid #000000;
+}
+
+.cart-card-q {
+
+}
+
+
+.cart-price {
+    font-size: 16px;
+}
+
+.opac {
+    opacity: 0.5;
+    margin: 0;
+}
+
+.cart-total-price-ots {
+    font-size: 18px;
+    margin-bottom: 25px;
+}
+
+.cart-total-price {
+    margin: 0;
+}
+
+.total {
+    margin: 50px 0 25px 0;
+}
+
+.cart-form {
+    margin-top: 25px;
+}
+
+.add-to-cart-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 180px;
+    height: 50px;
+    border: 1px solid #00000034;
+    border-radius: 5px;
+    margin: 0;
+    transition: all 0.5s ease;
+    background-color: #fff;
+    margin-top: 25px;
+}
+
+.add-to-cart-btn:hover {
+    border: 1px solid #000000;
+}
+
+.login {
+    width: 400px;
+    height: 600px;
+    margin-top: 100px;
+    border: 1px solid #00000036;
+    border-radius: 10px;
+}
+
+.login-reg {
+    width: 600px;
+    height: 600px;
+    margin-top: 100px;
+    border: 1px solid #00000036;
+    border-radius: 10px;
+}
+
+.login-title h2 {
+    margin-bottom: 30px;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.form-style {
+    width: 250px;
+    margin-left: 40px;
+}
+
+.login-btn {
+    display: flex;
+    justify-content: center;
+    width: 100px;
+    height: 50px;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 5px;
+    border: 1px solid #00000034;
+    margin-top: 20px;
+    transition: all 0.5s ease;
+}
+
+.login-btn:hover {
+    border: 1px solid #000000;
+}
+
+.reset-pass {
+    margin-left: 40px;
+    margin-top: 200px;
+}
+
+.form-stylereg {
+    width: 250px;
+    margin-left: 20px;
+}
+
+.form-styleprofile {
+    width: 250px;
+}
+
+.profile {
+    width: 570px;
+    height: 600px;
+    margin-top: 100px;
+    border: 1px solid #00000036;
+    border-radius: 10px;
+}
+
+.box2 {
+    margin-top: 212px;
+    margin-left: 20px;
+}
+
+.box22 {
+    margin-left: 20px;
+}
+
+.profile-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 50px;
+    border: 1px solid #00000034;
+    border-radius: 5px;
+    margin: 0;
+    transition: all 0.5s ease;
+    background-color: #fff;
+}
+
+.profile-btn:hover {
+    border: 1px solid #000000;
+}
+
+.checkout {
+    margin-top: 70px;
+    width: 600px;
+}
+
+.order-info {
+    margin-left: 40px;
+}
+
+.order-form input {
+    border-radius: 5px;
+    width: 250px;
+    height: 38px;
+    background-color: #fff;
+    box-shadow: none;
+    border: 1px solid #00000046;
+}
+
+.order-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.order-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 180px;
+    height: 50px;
+    border: 1px solid #00000034;
+    border-radius: 5px;
+    margin: 0;
+    transition: all 0.5s ease;
+    background-color: #fff;
+}
+
+.order-btn:hover {
+    border: 1px solid #000000;
+}
+
+.paynow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 180px;
+    height: 50px;
+    border: 1px solid #00000034;
+    border-radius: 5px;
+    transition: all 0.5s ease;
+    background-color: #fff;
+}
+
+.paynow:hover {
+    border: 1px solid #000000;
+}
+
+.pay-title {
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.pay-card {
+    width: 600px;
+    margin-top: 40px;
+    margin-left: 20px;
+}
+
+.payform {
+    position: fixed;
+    top: 75%;
+}
+
+.castle {
+    position: absolute;
+    width: 450px;
+    height: 650px;
+    left: 37%;
+    top: 15%;
+}
+
+.castlep {
+    position: absolute;
+    width: 450px;
+    height: 650px;
+    left: 45%;
+    top: 15%;
+}
+
+.vl {
+    position: absolute;
+    width: 1px;
+    height: 500px;
+    background-color: #000;
+    left: 32%;
+    top: 25%;   
+    opacity: 0.2;
+}
+
+.orderss {
+    margin-left: 70px;
+    width: 520px;
+    max-height: 52vh; 
+    overflow-y: auto;
+}
+
+.order-cart {
+    width: 500px;
+    border: 1px solid #00000034;
+    border-radius: 5px;
+    background-color: #fff;
+    margin: 0;
+    transition: all 0.5s ease;
+    margin-bottom: 10px;
+}
+
+.order-cart:hover {
+    border: 1px solid #000000;
+}
+
+.order-title {
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.order-desc {
+    margin-top: 5px;
+    margin-left: 10px;
+}
+
+.orders h2 {
+    margin-left: 60px;
+}
+
+.dadad {
+    font-family: "Carrois Gothic", sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.orders-carts {
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.image-nav {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.prev-btn, .next-btn {
+    color: #000;
+    background-color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 24px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+
+.next-btn:hover {
+    background-color: #00000013;
+}
+
+.prev-btn:hover {
+    background-color: #00000013;
+}
+
+.prev-btn {
+    position: absolute;
+    left: 8%;
+}
+
+.next-btn {
+    position: absolute;
+    left: 41%;
+}
+
+.notorders {
+    margin-left: 70px;
+    margin-top: 20px;
+}
+
+.mainvl {
+    position: absolute;
+    height: 650px;
+    width: 1px;
+    background-color: #000;
+    opacity: 0.2;
+    left: 18%;
+    top: 23%;
+}
+
+.regform button {
+    margin-left: 20px;
+    margin-top: 30px;
+}

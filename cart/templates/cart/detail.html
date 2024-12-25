@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Cart{% endblock title %}
+
+{% block content %}
+    <section class="cart d-flex">
+        <div class="cart-title">
+            <h2>Shopping Cart</h2>
+        </div>
+        <div class="cart-cards">
+            {% for item in cart %}
+                {% with product=item.product %}
+                    <div class="cart-card d-flex">
+                        <div class="cart-card-img">
+                            <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'img/noimage.jpg' %}{% endif %}" alt="">
+                        </div>
+                        <div class="cart-card-info">
+                            <div class="cart-card-name">
+                                <p>{{ product.name }}</p>
+                            </div>
+                            <div class="cart-card-q">
+                                <p>Quantity: {{ item.quantity }}</p>
+                            </div>
+                        </div>
+                        <form action="{% url 'cart:cart_remove' product.id %}" method="post">
+                            <input type="submit" value="Remove" class="remove-btn">
+                            {% csrf_token %}
+                        </form>
+                        <div class="cart-card-price">
+                            {% if product.discount %}
+                                <div class="card-discount d-flex gap-2">
+                                    <p class="line">{{ product.price }}</p>
+                                    <p>{{ product.sell_price }}</p>
+                                </div>
+                            {% else %}
+                                <p class="price">{{ product.price }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endwith %}
+            {% endfor %}
+        </div>
+        <div class="total">
+            <h5>Total sum: $ {{ cart.get_total_price }}</h5>
+        </div>
+        <div class="cart-buttons d-flex gap-3">
+            <a href="/shop" class="cart-btn">Continue Shopping</a>
+            {% with cart_quantity=cart|length %}
+                {% if cart_quantity > 0 %}
+                    <a href="#" class="cart-btn">Checkout</a>
+                {% endif %}
+            {% endwith %}
+        </div>
+    </section>
+{% endblock content %}

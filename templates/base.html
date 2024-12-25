@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>{% block title %}{% endblock title %}</title>
+
+    {% comment %} bootstarp {% endcomment %}
+    <link rel="stylesheet" href="{% static 'bootstrap\css\bootstrap.min.css' %}">
+    {% comment %} css {% endcomment %}
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+</head>
+<body>
+    <header class="header sticky-top">
+        <div class="header-container d-flex">
+            <navbar class="header-nav pt-4">
+                <ul class="header-list d-flex">
+                    <li>
+                        <a href="/" class="nav-a m-3">Home</a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-a m-3">Shop</a>
+                    </li>
+                </ul>
+            </navbar>
+            <div class="header-logo">
+                <a href="/"><img src="{% static 'img/qwewqe.png' %}" alt='' class="heavy-logo"></a>
+            </div>
+            <div class="header-profile pt-2">
+                <a href="{% url 'cart:cart_detail' %}"><img src="{% static 'img/grob.png' %}" class="grob" alt=""></a>
+                <a href="#" class="m-2">LOGIN</a>
+                <p class="cart-quantity">
+                    {% with cart_quantity=cart|length %}
+                        {% if cart_quantity > 0 %}
+                            {{ cart_quantity }}
+                        {% else %}
+                            0
+                        {% endif %}
+                    {% endwith %}
+                </p>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        {% block content %}
+        {% endblock content %}
+    </div>
+    <img src="{% static 'img/frame1.png' %}" class='frame1' alt="">
+    <img src="{% static 'img/frame2.png' %}" class='frame2' alt="">
+    <img src="{% static 'img/frame3.png' %}" class='frame3' alt="">
+    <img src="{% static 'img/frame4.png' %}" class='frame4' alt="">
+
+    {% comment %} js for bootstarp {% endcomment %}
+    <script src="{% static 'bootstrap\js\bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>
