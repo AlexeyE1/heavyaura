@@ -20,11 +20,11 @@
                     <h5 class="title-card">{{ product.name }}</h5>
                     {% if product.discount %}
                         <div class="card-discount d-flex gap-2">
-                            <p class="line">{{ product.price }}</p>
-                            <p>{{ product.sell_price }}</p>
+                            <p class="line">$ {{ product.price }}</p>
+                            <p>$ {{ product.sell_price }}</p>
                         </div>
                     {% else %}
-                        <p class="price">{{ product.price }}</p>
+                        <p class="price">$ {{ product.price }}</p>
                     {% endif %}
                 </a>
             {% endfor %}
