@@ -1,8 +1,11 @@
-from django.shortcuts import render
-from django.contrib import auth
+from django.shortcuts import render, redirect
+from django.contrib import auth, messages
 from django.urls import reverse_lazy
 from django.http import HttpResponseRedirect
-from .forms import UserLoginForm
+from .forms import UserLoginForm, UserRegistrationForm, ProfileForm
+from django.contrib.auth.decorators import login_required
+from django.db.models import Prefetch
+from orders.models import Order, OrderItem
 
 
 def login(request):
@@ -24,12 +27,44 @@ def login(request):
 
 
 def registration(request):
+    if request.method == 'POST':
+        form = UserRegistrationForm(data=request.POST)
+        if form.is_valid():
+            form.save()
+            user = form.instance
+            auth.login(request, user)
+            messages.success = (
+                request, f'{user.username}, Successful Registration'
+            )
+            return HttpResponseRedirect(reverse_lazy('user:login'))
+    else:
+        form = UserRegistrationForm
+
     return render(request, 'users/register.html')
 
 
+@login_required
 def profile(request):
-    return render(request, 'users/profile.html')
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, isinstance=request.user, files=request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success = (request, 'Profile was changed')
+            return HttpResponseRedirect(reverse_lazy('user:profile'))
+    else:
+        form = ProfileForm(isinstance=request.user)
+    
+    orders = Order.objects.filter(user=request.user).prefetch_related(
+        Prefetch(
+            'items',
+            queryset=OrderItem.objects.select_related('product')
+        )
+    ).order_by('-id')
+
+    return render(request, 'users/profile.html', {'form': form,
+                                                  'orders': orders})
 
 
 def logout(request):
-    pass
+    auth.logout(request)
+    return redirect(reverse_lazy('main:product_list'))
