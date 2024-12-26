@@ -1,11 +1,11 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 {% load static %}
 
 {% block title %}Login{% endblock title %}
 
 {% block content %}
     <section class="login d-flex">
-        <div class="login title">
+        <div class="login-title">
             <h2>Login</h2>
             <form action="{% url "user:login" %}" method="post">
                 {% csrf_token %}
@@ -20,8 +20,8 @@
                 </div>
                 <div class="mb-3">
                     <label for="id_password" class="form-label form-style">Password</label>
-                    <input type="text" class="form-control form-style"
-                    name="username" id="id_password" placeholder="Your password" required>
+                    <input type="password" class="form-control form-style"
+                    name="password" id="id_password" placeholder="Your password" required>
                 </div>
                 <button type="submit" class="login-btn form-style">Login</button>
             </form>

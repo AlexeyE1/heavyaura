@@ -19,7 +19,7 @@ def login(request):
 
             if user:
                 auth.login(request, user)
-                return HttpResponseRedirect(reverse_lazy('main:product'))
+                return HttpResponseRedirect(reverse_lazy('main:product_list'))
     else:
         form = UserLoginForm()
 
@@ -46,13 +46,13 @@ def registration(request):
 @login_required
 def profile(request):
     if request.method == 'POST':
-        form = ProfileForm(request.POST, isinstance=request.user, files=request.FILES)
+        form = ProfileForm(request.POST, instance=request.user, files=request.FILES)
         if form.is_valid():
             form.save()
             messages.success = (request, 'Profile was changed')
             return HttpResponseRedirect(reverse_lazy('user:profile'))
     else:
-        form = ProfileForm(isinstance=request.user)
+        form = ProfileForm(instance=request.user)
     
     orders = Order.objects.filter(user=request.user).prefetch_related(
         Prefetch(

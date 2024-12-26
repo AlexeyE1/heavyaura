@@ -30,7 +30,11 @@
             </div>
             <div class="header-profile pt-2">
                 <a href="{% url 'cart:cart_detail' %}"><img src="{% static 'img/grob.png' %}" class="grob" alt=""></a>
-                <a href="{% url "user:login" %}" class="m-2">LOGIN</a>
+                {% if user.is_authenticated %}
+                    <a href="{% url "user:profile" %}">Profile</a>
+                {% else %}
+                    <a href="{% url "user:login" %}" class="m-2">LOGIN</a>
+                {% endif %}
                 <p class="cart-quantity">
                     {% with cart_quantity=cart|length %}
                         {% if cart_quantity > 0 %}

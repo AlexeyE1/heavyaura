@@ -8,8 +8,41 @@
 {% block content %}
     <div class="detail-product d-flex">
         <div class="detail-img">
-            <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'img/noimage.jpg' %}{% endif %}" alt="" class="detail-image">
+            {% for image in product.images.all %}
+                <img class="detail-image" src="{{ image.image.url }}" alt="" style="display: none;" data-index="{{ forloop.counter0 }}">
+            {% endfor %}
+            <div class="image-nav">
+                <button class="prev-btn">&lsaquo;</button>
+                <button class="next-btn">&rsaquo;</button>
+            </div>
         </div>
+        <script>
+            const images = document.querySelectorAll('.detail-image');
+            const prevBtn = document.querySelector('.prev-btn');
+            const nextBtn = document.querySelector('.next-btn');
+            let currentIndex = 0;
+
+            images[currentIndex].style.display = 'block';
+
+            if (images.length === 1) {
+                prevBtn.style.display = 'none';
+                nextBtn.style.display = 'none';
+            } else {
+                prevBtn.addEventListener('click', () => {
+                    images[currentIndex].style.display = 'none';
+                    currentIndex = (currentIndex - 1 + images.length) % images.length;
+                    images[currentIndex].style.display = 'block';
+                });
+
+                nextBtn.addEventListener('click', () => {
+                    images[currentIndex].style.display = 'none';
+                    currentIndex = (currentIndex + 1) % images.length;
+                    images[currentIndex].style.display = 'block';
+                });
+            }
+        </script>
+
+
         <div class="detail-description">
             <h2>{{ product.name }}</h2>
             <h3>Category: {{ product.category }}</h3>
@@ -17,7 +50,7 @@
             {% if product.discount %}
                 <div class="card-discount d-flex gap-2">
                     <p class="line">$ {{ product.price }}</p>
-                    <p>$ {{ product.sell_price }}</p>
+                    <p class="price">$ {{ product.sell_price }}</p>
                 </div>
             {% else %}
                 <p class="price">$ {{ product.price }}</p>
