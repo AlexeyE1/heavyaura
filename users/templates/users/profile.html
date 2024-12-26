@@ -1,7 +1,86 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 {% load static %}
 
 {% block title %}Profile{% endblock title %}
 
 {% block content %}
+    <div class="d-flex">
+        <div class="windowp d-flex bg-white p-4 mb-4 mx-2 rounded">
+            <form action="{% url "users:profile" %}" method="post" enctype="multipart/form-data">
+                <h2 class="mb-2">Profile</h2>
+                {% csrf_token %}
+                <div class="d-flex">
+                    <div class="1box">
+                        <div class="col-md-12 mb-3">
+                            {% if user.image %}
+                                <img src="{{ user.image.url }}" alt="Avatar" class="img-fluid"
+                                style="max-width: 150px; max-height: 150px;">
+                            {% else %}
+                                <img src="{% static 'img/noimage.jpg' %}" alt="Avatar" class="img-fluid"
+                                style="max-width: 150px; max-height: 150px;">
+                            {% endif %}
+                            <input type="file" class="form-control form-styleprofile mt-2" id="id_image"
+                            name="image" accept="image/*">
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <label for="id_first_name" class="form-label">First Name</label>
+                            <input type="text" class="form-control form-styleprofile" id="id_first_name"
+                            name="first_name" placeholder="Your First Name" value="{{ form.first_name.value }}"
+                            required>
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <label for="id_last_name" class="form-label">Last Name</label>
+                            <input type="text" class="form-control form-styleprofile" id="id_last_name"
+                            name="last_name" placeholder="Your Last Name" value="{{ form.last_name.value }}"
+                            required>
+                        </div>
+                    </div>
+                    <div class="box2">
+                        <div class="col-md-12 mb-3">
+                            <label for="id_username" class="form-label">Username</label>
+                            <input type="text" class="form-control form-styleprofile" id="id_username"
+                            name="username" placeholder="Your Username" value="{{ form.username.value }}"
+                            required>
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <label for="id_email" class="form-label">Email</label>
+                            <input type="email" class="form-control form-styleprofile" id="id_email"
+                            name="email" placeholder="Your Email" value="{{ form.email.value }}"
+                            required>
+                        </div>
+                    </div>
+                </div>
+                <div class="btns d-flex gap-4 mt-4">
+                    <button type="submit" class="profile-btn">Save</button>
+                    <a class="profile-btn" href="{% url "user:logout" %}">Logout</a>
+                </div>
+                
+            </form>
+            <div class="orders">
+                <h2 class="mb-2">Your Orders</h2>   
+                {% if orders %}
+                    <div class="orderss">
+                        {% for order in orders %}
+                            <div class="order-cart">
+                                <h5 class="order-title">Order № {{ order.id }}</h5>
+                                <p class="order-desc">
+                                    {% for item in order.items.all %}
+                                        <div class="orders-carts">
+                                            <span class="dadad">Name: </span><a class="" href="{% url 'main:product_detail' item.product.slug %}">{{ item.product.name }}</a>
+                                            <br>
+                                            <span class="dadad">Quantity:</span> {{ item.quantity }},
+                                            <span class="dadad">Price: $ {{ item.price }}</span> <br>
+                                            <span class="dadad">Date:</span>  {{ order.created }}
+                                            <br>
+                                        </div>
+                                    {% endfor %}
+                                </p>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <h4 class="notorders">You haven't ordered anything yet.</h4>
+                {% endif %}         
+            </div>
+        </div>
 {% endblock content %}

@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import auth, messages
 from django.urls import reverse_lazy
 from django.http import HttpResponseRedirect
-from .forms import UserLoginForm, UserRegistrationForm, ProfileForm
+from .forms import UserLoginForm, UserRegistrationFrom, ProfileForm
 from django.contrib.auth.decorators import login_required
 from django.db.models import Prefetch
 from orders.models import Order, OrderItem
@@ -28,7 +28,7 @@ def login(request):
 
 def registration(request):
     if request.method == 'POST':
-        form = UserRegistrationForm(data=request.POST)
+        form = UserRegistrationFrom(data=request.POST)
         if form.is_valid():
             form.save()
             user = form.instance
@@ -38,9 +38,9 @@ def registration(request):
             )
             return HttpResponseRedirect(reverse_lazy('user:login'))
     else:
-        form = UserRegistrationForm
+        form = UserRegistrationFrom
 
-    return render(request, 'users/register.html')
+    return render(request, 'users/registration.html')
 
 
 @login_required
