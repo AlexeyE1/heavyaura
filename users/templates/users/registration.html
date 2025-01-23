@@ -46,6 +46,9 @@
                         value="{% if form.password2.value %}{{ form.password2.value }}{% endif %}"
                         name="password2" placeholder="Your Password" required>
                     </div>
+                    {% for f in form %}
+                    <div class="form-error">{{ f.errors }}</div>
+                    {% endfor %}
                 </div>
                 <button type="submit" class="login-btn form-style">Register</button>
             </form>

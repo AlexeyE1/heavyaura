@@ -798,3 +798,9 @@ input:focus {
     margin-left: 20px;
     margin-top: 30px;
 }
+
+.form-error {
+    list-style: none;
+    padding: 0;
+    color: #CC0000;
+}

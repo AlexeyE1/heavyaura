@@ -52,9 +52,11 @@
                 </div>
                 <div class="btns d-flex gap-4 mt-4">
                     <button type="submit" class="profile-btn">Save</button>
-                    <a class="profile-btn" href="{% url "user:logout" %}">Logout</a>
                 </div>
-                
+            </form>
+            <form method="POST" action="{% url 'user:logout' %}">
+                {% csrf_token %}
+                <button type="submit" class="profile-btn">Logout</button>
             </form>
             <div class="orders">
                 <h2 class="mb-2">Your Orders</h2>   

@@ -152,3 +152,13 @@ LOGOUT_REDIRECT_URL = '/'
 LOGIN_URL = 'user:login'
 
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'
+
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'ae0128019@gmail.com'
+EMAIL_HOST_PASSWORD = 'ernm bujn eknb cwbc'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
+
