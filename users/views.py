@@ -1,10 +1,10 @@
-from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LoginView, PasswordChangeView
 from django.views.generic import CreateView, TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.contrib import messages
 from django.shortcuts import redirect
-from .forms import UserLoginForm, UserRegistrationFrom, ProfileForm
+from .forms import UserLoginForm, UserRegistrationFrom, ProfileForm, UserPasswordChangeForm
 from orders.models import Order, OrderItem
 from django.db.models import Prefetch
 
@@ -51,3 +51,9 @@ class UserProfileView(LoginRequiredMixin, TemplateView):
             context = self.get_context_data()
             context['form'] = form
             return self.render_to_response(context)
+
+
+class UserPasswordChange(PasswordChangeView):
+    form_class = UserPasswordChangeForm
+    success_url = reverse_lazy('users:password_change_done')
+    template_name = 'users/password_change_form.html'
