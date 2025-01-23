@@ -1,4 +1,4 @@
-from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth.views import LoginView
 from django.views.generic import CreateView, TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
@@ -23,14 +23,7 @@ class UserRegistrationView(CreateView):
     form_class = UserRegistrationFrom
     success_url = reverse_lazy('user:login')
 
-    def form_valid(self, form):
-        response = super().form_valid(form)
-        user = form.instance
-        auth.login(self.request, user)
-        messages.success(self.request, f'{user.username}, Successful Registration')
-        return redirect(self.get_success_url())
     
-
 class UserProfileView(LoginRequiredMixin, TemplateView):
     template_name = 'users/profile.html'
 

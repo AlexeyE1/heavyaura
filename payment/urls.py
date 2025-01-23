@@ -1,12 +1,13 @@
 from django.urls import path
-from . import views, webhooks
+from . import  webhooks
+from .views import *
 
 
 app_name = 'payment'
 
 urlpatterns = [
-    path('process/', views.payment_process, name='process'),
-    path('completed/', views.payment_completed, name='completed'),
-    path('canceled/', views.payment_canceled, name='canceled'),
+    path('process/', PaymentProcessView.as_view(), name='process'),
+    path('completed/', PaymentCompletedView.as_view(), name='completed'),
+    path('canceled/', PaymentCanceledView.as_view(), name='canceled'),
     path('webhook/', webhooks.stripe_webhook, name='webhook'),
 ]
