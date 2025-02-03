@@ -34,6 +34,7 @@
                     <a href="{% url "user:profile" %}">Profile</a>
                 {% else %}
                     <a href="{% url "user:login" %}" class="m-2">LOGIN</a>
+                    <a href="{% url "social:begin" "google-oauth2" %}" class="m-2">Login with Google</a>
                 {% endif %}
                 <p class="cart-quantity">
                     {% with cart_quantity=cart|length %}

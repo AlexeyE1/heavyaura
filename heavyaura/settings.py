@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'users',
     'orders',
     'payment',
+    'social_django',
 ]
 
 MIDDLEWARE = [
@@ -138,6 +139,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
+
 CART_SESSION_ID = 'cart'
 
 AUTH_USER_MODEL = 'users.User'
@@ -168,3 +170,16 @@ EMAIL_USE_SSL = False
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
+
+
+SOCIAL_AUTH_JSONFIELD_ENABLED = True
+SOCIAL_AUTH_URL_NAMESPACE = 'social'
+
+
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.google.GoogleOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '870787038923-pt52hbg9mtc64a77gbg7jqtmt2mgslo0.apps.googleusercontent.com' # Google Consumer Key
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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' # Google Consumer Secret
