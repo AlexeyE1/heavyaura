@@ -3,8 +3,9 @@ from django.views.generic.base import TemplateView
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from decimal import Decimal
-from orders.models import Order
+from orders.models import Order, OrderItem
 from django.conf import settings
+from django.db.models import Prefetch
 import stripe
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
@@ -14,7 +15,12 @@ stripe.api_version = settings.STRIPE_API_VERSION
 class PaymentProcessView(View):
     def get(self, request, *args, **kwargs):
         order_id = request.session.get('order_id', None)
-        order = get_object_or_404(Order, id=order_id)
+        order = get_object_or_404(
+            Order.objects.prefetch_related(
+                Prefetch('items', queryset=OrderItem.objects.select_related('product'))
+            ),
+            id=order_id
+        )
         return render(request, 'payment/process.html', {'order': order})
 
     def post(self, request, *args, **kwargs):
